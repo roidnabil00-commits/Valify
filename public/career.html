@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Valify</title>
+    
+    <!-- Impor Font Google (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <!-- ===== HEADER / NAVIGASI ===== -->
+    <header class="navbar">
+        <div class="container">
+            <!-- Link ke Homepage -->
+            <a href="index.html" class="logo logo-text">
+                Valify
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <!-- MODIFIED: Link to business.html -->
+                    <li><a href="business.html">Business</a></li>
+                    <!-- MODIFIED: Link ke self-development.html -->
+                    <li><a href="self-development.html">Self-Development</a></li>
+                    <!-- Halaman Aktif -->
+                    <li><a href="career.html" style="border-bottom-color: #FFFFFF;">Career</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-extra">
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== KONTEN UTAMA "CAREER" ===== -->
+    <div class="main-wrapper">
+        <main>
+            <div class="container">
+                <section class="career-section">
+                    <div class="career-content">
+                        <h1 class="career-header">Careers at Valify</h1>
+                        <p class="career-message">
+                            We are not actively hiring for any positions right now, but we are always looking for passionate and talented individuals to join our mission.
+                        </p>
+                        <p class="cta-email">
+                            Feel free to send your resume to <a href="mailto:hello@valify.com">hello@valify.com</a>.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <!-- Link ke Homepage -->
+                    <a href="index.html" class="footer-logo logo-text">Valify</a>
+                    <p class="motto">"Smarter Decisions, Made Simple, And Always Valid."</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">TikTok</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Valify. All rights reserved.</span>
+                <span class="tagline">Always Valid.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT INTERNAL ===== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.getElementById('hamburgerMenu');
+            const navMenu = document.getElementById('navMenu');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

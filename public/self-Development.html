@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Development - Valify</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo logo-text">Valify</a>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="business.html">Business</a></li>
+                    <li><a href="self-development.html" class="active">Self-Development</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-extra">
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <main>
+            <div class="container">
+                <h1 class="page-header">Self-Development</h1>
+
+                <section class="article-grid" id="article-feed">
+                    </section>
+                
+                <div class="load-more-container">
+                    <button id="load-more-btn">Muat Lebih Banyak</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="index.html" class="footer-logo logo-text">Valify</a>
+                    <p class="motto">"Smarter Decisions, Made Simple, And Always Valid."</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">TikTok</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Valify. All rights reserved.</span>
+                <span class="tagline">Always Valid.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.getElementById('hamburgerMenu');
+            const navMenu = document.getElementById('navMenu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCBaMRwg5PP-c2JdX5TGy_FHIN7_gnHC4w",
+        authDomain: "valify-website-369e4.firebaseapp.com",
+        projectId: "valify-website-369e4",
+        storageBucket: "valify-website-369e4.firebasestorage.app",
+        messagingSenderId: "491809820627",
+        appId: "1:491809820627:web:dd8a14f568732c15946926",
+        measurementId: "G-KEBM9P2T30"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const db = firebase.firestore();
+            let lastVisible = null;
+            const articlesPerPage = 10;
+            const articleFeed = document.getElementById('article-feed');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+
+            function fetchCategoryArticles() {
+                loadMoreBtn.disabled = true;
+                loadMoreBtn.innerText = "Loading...";
+
+                let query = db.collection("articles")
+                              .where("category", "==", "self-development")
+                              .orderBy("createdAt", "desc");
+                
+                if (lastVisible) {
+                    query = query.startAfter(lastVisible);
+                }
+                
+                query = query.limit(articlesPerPage);
+
+                query.get()
+                  .then((querySnapshot) => {
+                      if (querySnapshot.empty) {
+                          loadMoreBtn.innerText = "Semua Artikel Dimuat";
+                          loadMoreBtn.style.display = 'none';
+                          if (!lastVisible) {
+                            articleFeed.innerHTML = "<p style='color: #888; text-align: center;'>Belum ada artikel di kategori Self-Development.</p>";
+                          }
+                          return;
+                      }
+                      
+                      lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+
+                      querySnapshot.forEach((doc) => {
+                          const article = doc.data();
+                          const articleId = doc.id; 
+
+                          const cardHtml = `
+                          <article class="card">
+                              <div class="card-image"><img src="${article.imageUrl}" alt="Article Image"><span class="tag verified">Validated</span></div>
+                              <div class="card-content">
+                                  <h3>${article.title}</h3>
+                                  <p>${article.description}</p>
+                                  <a href="article.html?id=${articleId}" class="read-more-card">Read More</a>
+                              </div>
+                          </article>
+                          `;
+                          articleFeed.innerHTML += cardHtml;
+                      });
+
+                      loadMoreBtn.disabled = false;
+                      loadMoreBtn.innerText = "Muat Lebih Banyak";
+
+                      if (querySnapshot.docs.length < articlesPerPage) {
+                          loadMoreBtn.innerText = "Semua Artikel Dimuat";
+                          loadMoreBtn.style.display = 'none';
+                      }
+                  })
+                  .catch((error) => {
+                      console.error("Error mengambil artikel: ", error);
+                      loadMoreBtn.innerText = "Gagal Memuat";
+                  });
+            }
+            fetchCategoryArticles();
+            loadMoreBtn.addEventListener('click', fetchCategoryArticles);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+# File-file Sistem Operasi
+.DS_Store
+Thumbs.db
+
+# File-file Konfigurasi Editor (Contoh: VS Code)
+.vscode/
+.idea/
+
+# File-file Environment (Jaga-jaga jika nanti dipakai)
+# (Walaupun Firebase config Anda aman, ini praktik yang baik)
+.env
+.env.local

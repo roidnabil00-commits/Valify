@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Loading Article... - Valify</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo logo-text">Valify</a>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="business.html">Business</a></li>
+                    <li><a href="self-development.html">Self-Development</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-extra">
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section class="article-container" id="article-main">
+                <h1 id="article-title">Loading...</h1>
+                
+                <div class="article-image-container">
+                    <img src="https://placehold.co/1200x500/111111/111111" alt="Loading image..." id="article-image">
+                </div>
+                
+                <div class="article-body" id="article-body">
+                    <p>Loading content...</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="index.html" class="footer-logo logo-text">Valify</a>
+                    <p class="motto">"Smarter Decisions, Made Simple, And Always Valid."</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">TikTok</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Valify. All rights reserved.</span>
+                <span class="tagline">Always Valid.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.getElementById('hamburgerMenu');
+            const navMenu = document.getElementById('navMenu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+      // Konfigurasi Anda
+      const firebaseConfig = {
+        apiKey: "AIzaSyCBaMRwg5PP-c2JdX5TGy_FHIN7_gnHC4w",
+        authDomain: "valify-website-369e4.firebaseapp.com",
+        projectId: "valify-website-369e4",
+        storageBucket: "valify-website-369e4.firebasestorage.app",
+        messagingSenderId: "491809820627",
+        appId: "1:491809820627:web:dd8a14f568732c15946926",
+        measurementId: "G-KEBM9P2T30"
+      };
+      // Inisialisasi Firebase v8
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Ambil ID Artikel dari URL
+            const params = new URLSearchParams(window.location.search);
+            const articleId = params.get('id'); // Ini akan mengambil nilai dari ?id=...
+
+            // Dapatkan elemen 'wadah' di Halaman
+            const titleElement = document.getElementById('article-title');
+            const imageElement = document.getElementById('article-image');
+            const bodyElement = document.getElementById('article-body');
+
+            if (!articleId) {
+                // Jika tidak ada ?id= di URL
+                titleElement.innerText = "Artikel Tidak Ditemukan";
+                bodyElement.innerHTML = "<p>URL tidak valid atau tidak memiliki ID artikel. Silakan kembali ke halaman utama.</p>";
+                imageElement.style.display = 'none'; // Sembunyikan gambar
+                return;
+            }
+
+            // 2. Hubungkan ke Firebase
+            try {
+                const db = firebase.firestore();
+
+                console.log("Mencari artikel dengan ID:", articleId);
+
+                // 3. Ambil DOKUMEN SPESIFIK dari koleksi "articles"
+                db.collection("articles").doc(articleId).get()
+                    .then((doc) => {
+                        if (doc.exists) {
+                            // 4. Jika artikel ditemukan!
+                            console.log("Artikel ditemukan:", doc.data());
+                            const article = doc.data();
+                            
+                            // 5. Masukkan data ke Halaman (Render)
+                            titleElement.innerText = article.title;
+                            imageElement.src = article.imageUrl;
+                            imageElement.alt = article.title; // Penting untuk SEO
+                            
+                            // Penting: gunakan .innerHTML agar tag <p> <strong> <ul>
+                            // dari editor bisa di-render sebagai HTML
+                            bodyElement.innerHTML = article.fullContent; 
+                            
+                            // Ganti title tab browser
+                            document.title = article.title + " - Valify";
+                            
+                        } else {
+                            // 6. Jika ID-nya ada tapi datanya tidak ada di database
+                            console.error("Dokumen tidak ditemukan!");
+                            titleElement.innerText = "Artikel Tidak Ditemukan";
+                            bodyElement.innerHTML = `<p>Kami tidak dapat menemukan artikel dengan ID ${articleId}.</p>`;
+                            imageElement.style.display = 'none';
+                        }
+                    })
+                    .catch((error) => {
+                        // 7. Jika ada error saat mengambil data
+                        console.error("Error mengambil dokumen:", error);
+                        titleElement.innerText = "Error Memuat Artikel";
+                        bodyElement.innerHTML = "<p>Terjadi kesalahan saat terhubung ke database.</p>";
+                    });
+
+            } catch (error) {
+                console.error("Firebase error:", error);
+                titleElement.innerText = "Error";
+                bodyElement.innerHTML = "<p>Gagal menginisialisasi database.</p>";
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Valify</title>
+    
+    <!-- Impor Font Google (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <!-- ===== HEADER / NAVIGASI ===== -->
+    <header class="navbar">
+        <div class="container">
+            <!-- MODIFIED: Link ke Homepage -->
+            <a href="index.html" class="logo logo-text">
+                Valify
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <!-- MODIFIED: Link to business.html -->
+                    <li><a href="business.html">Business</a></li>
+                    <!-- MODIFIED: Link ke self-development.html -->
+                    <li><a href="self-development.html">Self-Development</a></li>
+                    <!-- MODIFIED: Link ke career.html -->
+                    <li><a href="career.html">Career</a></li>
+                    <!-- MODIFIED: Halaman Aktif -->
+                    <li><a href="about.html" style="border-bottom-color: #FFFFFF;">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-extra">
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== KONTEN UTAMA "ABOUT US" ===== -->
+    <main>
+        <div class="container">
+            <section class="about-section">
+                
+                <h1 class="about-header">About Valify<span class="highlight">.</span></h1>
+                <p class="about-motto">"Smarter Decisions, Made Simple, And Always Valid."</p>
+
+                <!-- Visi diambil dari Valify.docx dan diterjemahkan -->
+                <div class="vision-section">
+                    <h2>Our Vision</h2>
+                    <p>"To be the most trusted information ecosystem for the Younger Generation in Indonesia, empowering them to make career, business, and self-development decisions with clear, validated insights."</p>
+                </div>
+
+                <!-- Misi diambil dari Valify.docx dan diterjemahkan -->
+                <div class="mission-section">
+                    <h2>Our Mission</h2>
+                    <div class="mission-grid">
+                        <div class="mission-item">
+                            <h3>Validation</h3>
+                            <p>To perform strict curation and validation on the sea of information, trends, and insights in the business and self-development world.</p>
+                        </div>
+                        <div class="mission-item">
+                            <h3>Clarification</h3>
+                            <p>To translate complex issues and concepts into dense, accurate, and relevant summaries using language that resonates with the Younger Generation.</p>
+                        </div>
+                        <div class="mission-item">
+                            <h3>Distribution</h3>
+                            <p>To present validated and curated content on all relevant platforms (TikTok, Instagram, YouTube, Articles) to be easily accessible wherever the audience is.</p>
+                        </div>
+                        <div class="mission-item">
+                            <h3>Education</h3>
+                            <p>To build a platform and community that actively encourages critical thinking, digital literacy, and anti-hoax sentiments among the Younger Generation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== ADDED: BAGIAN KONTAK ===== -->
+                <section class="contact-section">
+                    <h2>Get in Touch</h2>
+                    <p class="contact-intro">We're open for collaborations, partnerships, feedback, or just a chat about interesting ideas.</p>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <h3>Email Us</h3>
+                            <!-- Menggunakan placeholder email -->
+                            <a href="mailto:hello@valify.com">hello@valify.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <h3>WhatsApp</h3>
+                            <!-- Menggunakan placeholder nomor WA -->
+                            <a href="https://wa.me/6281200000000" target="_blank">+62 812-0000-0000</a>
+                        </div>
+                    </div>
+                </section>
+                <!-- ===== END OF BAGIAN KONTAK ===== -->
+
+            </section>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <!-- MODIFIED: Link ke Homepage -->
+                    <a href="index.html" class="footer-logo logo-text">Valify</a>
+                    <p class="motto">"Smarter Decisions, Made Simple, And Always Valid."</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">TikTok</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Valify. All rights reserved.</span>
+                <span class="tagline">Always Valid.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT INTERNAL (Sama seperti index.html) ===== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.getElementById('hamburgerMenu');
+            const navMenu = document.getElementById('navMenu');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
