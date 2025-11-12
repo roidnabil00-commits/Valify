@@ -260,6 +260,7 @@ img {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* Batasi teks hanya 3 baris */
+    line-clamp: 3; /* <- Ini perbaikan warning dari VS Code */
     -webkit-box-orient: vertical;
 }
 .read-more-card {
@@ -502,6 +503,13 @@ img {
     background-color: #ccc;
 }
 
+/* Style saat tombol dinonaktifkan (sedang loading) */
+#load-more-btn:disabled {
+    background-color: #555;
+    color: #999;
+    cursor: not-allowed;
+}
+
 /* ======================================================= */
 /* 9. STYLE UNTUK ADMIN.HTML (PERBAIKAN FINAL DENGAN !IMPORTANT) */
 /* ======================================================= */
@@ -649,7 +657,7 @@ button.logout-btn:hover {
 }
 .ql-snow .ql-picker-item:hover {
     background-color: #444 !important;
-    color: #fff !Mimportant;
+    color: #fff !important; /* <-- TYPO DIPERBAIKI DI SINI */
 }
 
 /* --- AKHIR PERBAIKAN EDITOR --- */
