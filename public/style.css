@@ -503,10 +503,9 @@ img {
 }
 
 /* ======================================================= */
-/* 9. STYLE UNTUK ADMIN.HTML (DIPERBAIKI) */
+/* 9. STYLE UNTUK ADMIN.HTML (PERBAIKAN FINAL DENGAN !IMPORTANT) */
 /* ======================================================= */
 
-/* Mengatur ulang style .container khusus di halaman admin */
 #login-container,
 #admin-header,
 #admin-content {
@@ -528,7 +527,7 @@ img {
 
 #admin-header {
     padding: 20px 30px;
-    display: none; /* Disembunyikan oleh JS awalnya */
+    display: none;
 }
 
 #admin-header h1 {
@@ -549,7 +548,6 @@ img {
     font-size: 16px;
 }
 
-/* Style untuk semua input di admin */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -563,14 +561,13 @@ select {
     border: 1px solid #444;
     color: #FFFFFF;
     border-radius: 5px;
-    box-sizing: border-box; /* Penting */
+    box-sizing: border-box;
 }
 
 textarea {
     min-height: 120px;
 }
 
-/* Style untuk tombol di admin */
 #login-form button,
 #form-artikel button {
     background-color: #FFFFFF;
@@ -590,9 +587,8 @@ textarea {
     background-color: #ccc;
 }
 
-/* Tombol Logout */
 button.logout-btn {
-    background-color: #880808; /* Merah tua */
+    background-color: #880808;
     color: #FFFFFF;
     padding: 10px 20px;
     font-weight: 700;
@@ -600,73 +596,64 @@ button.logout-btn {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    width: auto; /* Jangan 100% */
+    width: auto;
     margin-top: 15px;
 }
 button.logout-btn:hover {
     background-color: #a04040;
 }
 
-/* --- PERBAIKAN EDITOR TULISAN (QUIL) DIMULAI DI SINI --- */
+/* --- PERBAIKAN EDITOR DENGAN !IMPORTANT --- */
 
-/* Ini adalah 'wadah' editor, di luar toolbar */
 #editor-container {
     border: 1px solid #444;
     border-radius: 5px;
-    overflow: hidden; /* Memaksa radius di anak-anaknya */
+    overflow: hidden;
 }
 
-/* Ini adalah toolbar (latar belakang gelap) */
+/* Memaksa background toolbar jadi gelap */
 .ql-snow .ql-toolbar {
-    background-color: #333;
-    border: none; /* Hapus border default */
-    border-bottom: 1px solid #444; /* Beri border bawah */
-    padding: 12px 8px;
+    background-color: #333 !important; /* <--- PERBAIKAN */
+    border: none !important;
+    border-bottom: 1px solid #444 !important;
+    padding: 12px 8px !important;
 }
 
-/* Ini adalah kotak tempat menulis (latar belakang gelap) */
+/* Memaksa background area tulis jadi gelap */
 .ql-snow .ql-container {
-    background-color: #222;
-    color: #FFFFFF;
-    border: none; /* Hapus border default */
-    min-height: 350px;
+    background-color: #222 !important; /* <--- PERBAIKAN */
+    color: #FFFFFF !important;
+    border: none !important;
+    min-height: 350px !important;
 }
 
-/* Mengubah warna ikon (stroke) menjadi putih */
+/* Memaksa ikon jadi putih */
 .ql-snow .ql-stroke {
     stroke: #fff !important;
 }
-
-/* Mengubah warna ikon (fill) menjadi putih */
 .ql-snow .ql-fill {
     fill: #fff !important;
 }
-
-/* Mengubah warna teks "Normal" (dan dropdown lainnya) */
 .ql-snow .ql-picker-label {
     color: #fff !important;
 }
 
-/* Mengubah warna dropdown saat dibuka */
+/* Memaksa dropdown jadi gelap */
 .ql-snow .ql-picker-options {
-    background-color: #222;
-    border-color: #444;
-    padding: 10px;
+    background-color: #222 !important;
+    border-color: #444 !important;
+    padding: 10px !important;
 }
-
-/* Mengubah warna item di dropdown */
 .ql-snow .ql-picker-item {
-    color: #fff;
+    color: #fff !important;
 }
 .ql-snow .ql-picker-item:hover {
-    background-color: #444;
-    color: #fff;
+    background-color: #444 !important;
+    color: #fff !Mimportant;
 }
 
 /* --- AKHIR PERBAIKAN EDITOR --- */
 
-
-/* Tampilan Awal (Diatur oleh JS) */
 #admin-content {
     display: none;
 }
