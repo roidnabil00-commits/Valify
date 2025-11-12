@@ -508,3 +508,133 @@ img {
     color: #999;
     cursor: not-allowed;
 }
+/* ======================================================= */
+/* 9. STYLE UNTUK ADMIN.HTML (BARU) */
+/* ======================================================= */
+
+/* Mengatur ulang style .container khusus di halaman admin */
+#login-container,
+#admin-header,
+#admin-content {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+#login-container h1,
+#admin-content h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+#admin-header {
+    padding: 20px 30px;
+    display: none; /* Disembunyikan oleh JS awalnya */
+}
+
+#admin-header h1 {
+    margin: 0;
+    border: none;
+    padding: 0;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Style untuk semua input di admin */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #222;
+    border: 1px solid #444;
+    color: #FFFFFF;
+    border-radius: 5px;
+    box-sizing: border-box; /* Penting */
+}
+
+textarea {
+    min-height: 120px;
+}
+
+/* Style untuk tombol di admin */
+#login-form button,
+#form-artikel button {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 12px 25px;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#login-form button:hover,
+#form-artikel button:hover {
+    background-color: #ccc;
+}
+
+/* Tombol Logout */
+button.logout-btn {
+    background-color: #880808; /* Merah tua */
+    color: #FFFFFF;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: auto; /* Jangan 100% */
+    margin-top: 15px;
+}
+button.logout-btn:hover {
+    background-color: #a04040;
+}
+
+/* Style Editor Teks (Quill.js) */
+#editor-container {
+    height: 350px;
+    background-color: #222;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+.ql-toolbar {
+    background-color: #333;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid #444 !important;
+}
+.ql-toolbar .ql-stroke { stroke: #fff; }
+.ql-toolbar .ql-fill { fill: #fff; }
+.ql-toolbar .ql-picker-label { color: #fff; }
+
+/* Tampilan Awal (Diatur oleh JS) */
+#admin-content {
+    display: none;
+}
+#login-form {
+    display: block;
+}
