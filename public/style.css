@@ -502,14 +502,8 @@ img {
     background-color: #ccc;
 }
 
-/* Style saat tombol dinonaktifkan (sedang loading) */
-#load-more-btn:disabled {
-    background-color: #555;
-    color: #999;
-    cursor: not-allowed;
-}
 /* ======================================================= */
-/* 9. STYLE UNTUK ADMIN.HTML (BARU) */
+/* 9. STYLE UNTUK ADMIN.HTML (DIPERBAIKI) */
 /* ======================================================= */
 
 /* Mengatur ulang style .container khusus di halaman admin */
@@ -613,23 +607,64 @@ button.logout-btn:hover {
     background-color: #a04040;
 }
 
-/* Style Editor Teks (Quill.js) */
+/* --- PERBAIKAN EDITOR TULISAN (QUIL) DIMULAI DI SINI --- */
+
+/* Ini adalah 'wadah' editor, di luar toolbar */
 #editor-container {
-    height: 350px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    overflow: hidden; /* Memaksa radius di anak-anaknya */
+}
+
+/* Ini adalah toolbar (latar belakang gelap) */
+.ql-snow .ql-toolbar {
+    background-color: #333;
+    border: none; /* Hapus border default */
+    border-bottom: 1px solid #444; /* Beri border bawah */
+    padding: 12px 8px;
+}
+
+/* Ini adalah kotak tempat menulis (latar belakang gelap) */
+.ql-snow .ql-container {
     background-color: #222;
     color: #FFFFFF;
-    border-radius: 5px;
-    border: 1px solid #444;
+    border: none; /* Hapus border default */
+    min-height: 350px;
 }
-.ql-toolbar {
-    background-color: #333;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom: 1px solid #444 !important;
+
+/* Mengubah warna ikon (stroke) menjadi putih */
+.ql-snow .ql-stroke {
+    stroke: #fff !important;
 }
-.ql-toolbar .ql-stroke { stroke: #fff; }
-.ql-toolbar .ql-fill { fill: #fff; }
-.ql-toolbar .ql-picker-label { color: #fff; }
+
+/* Mengubah warna ikon (fill) menjadi putih */
+.ql-snow .ql-fill {
+    fill: #fff !important;
+}
+
+/* Mengubah warna teks "Normal" (dan dropdown lainnya) */
+.ql-snow .ql-picker-label {
+    color: #fff !important;
+}
+
+/* Mengubah warna dropdown saat dibuka */
+.ql-snow .ql-picker-options {
+    background-color: #222;
+    border-color: #444;
+    padding: 10px;
+}
+
+/* Mengubah warna item di dropdown */
+.ql-snow .ql-picker-item {
+    color: #fff;
+}
+.ql-snow .ql-picker-item:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+/* --- AKHIR PERBAIKAN EDITOR --- */
+
 
 /* Tampilan Awal (Diatur oleh JS) */
 #admin-content {
