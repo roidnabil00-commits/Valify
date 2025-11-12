@@ -253,7 +253,14 @@ img {
 .card-content p {
     font-size: 14px;
     color: #bbb;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Sedikit mengurangi margin bawah */
+
+    /* Ini adalah "magic" untuk memotong teks */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Batasi teks hanya 3 baris */
+    -webkit-box-orient: vertical;
 }
 .read-more-card {
     font-size: 14px;
